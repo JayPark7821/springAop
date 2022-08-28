@@ -1,4 +1,4 @@
-package hello.aop.order.aop;
+package hello.aop;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -10,14 +10,14 @@ import org.aspectj.lang.annotation.Pointcut;
 @Aspect
 public class AspectV4PointCut {
 
-    @Around("hello.aop.order.aop.Pointcuts.allOrder()")
+    @Around("hello.aop.Pointcuts.allOrder()")
     public Object doLog(ProceedingJoinPoint joinPoint) throws Throwable {
 
         log.info("[log] {}", joinPoint.getSignature());// join point 시그니처
         return joinPoint.proceed();
     }
 
-    @Around("hello.aop.order.aop.Pointcuts.orderAndService()")
+    @Around("hello.aop.Pointcuts.orderAndService()")
     public Object doTransaction(ProceedingJoinPoint joinPoint) throws Throwable {
         try {
             log.info("[트랜잭션 시작] {}", joinPoint.getSignature());
